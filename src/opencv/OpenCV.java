@@ -59,7 +59,7 @@ public class OpenCV {
                 new Scalar(255, 0, 0), //Scalar object for color
                 5 //Thickness of the circle
         );
-
+        
         Size size = rect.size();
         System.out.println("Width : " + size.width + " Height : " + size.height);
 

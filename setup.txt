@@ -1,0 +1,4 @@
+install opecv
+add jar (opencv/build/java/jar) in project-> lib 
+set native libs for the jar (opencv/build/java/(x86)/(x64))
+	or add the libs at runtime : proj.props/run/vm ( -Djava.library.path="C:\opencv\build\java\x64" )
