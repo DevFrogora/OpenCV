@@ -18,6 +18,14 @@ public class ColorDetector {
 
     public static Mat selectColorInMat(Mat srcMat, Scalar lowBound, Scalar upperBound) {
 
+        Core.inRange(srcMat, lowBound, upperBound, srcMat);
+
+        return srcMat;
+
+    }
+
+    public static Mat selectColorInMatHSV(Mat srcMat, Scalar lowBound, Scalar upperBound) {
+
         Imgproc.cvtColor(srcMat, srcMat, Imgproc.COLOR_BGR2HSV);
         Core.inRange(srcMat, lowBound, upperBound, srcMat);
 
