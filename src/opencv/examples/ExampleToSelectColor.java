@@ -20,7 +20,10 @@ public class ExampleToSelectColor extends OpenCVLifeCycle {
     @Override
     public void run() {
         setRandomShape();
-        imageMat = ColorDetector.selectColorInMatHSV(imageMat, new Scalar(95,150,75,0),new Scalar(145,255,255,0));
+//        imageMat = ColorDetector.selectColorInMatHSV(imageMat,ScalarColor.BLUE_HSV_LL ,ScalarColor.BLUE_HSV_HL);
+//        imageMat = ColorDetector.selectColorInMatHSV(imageMat,ScalarColor.RED_HSV_LL ,ScalarColor.RED_HSV_HL);
+        imageMat = ColorDetector.selectColorInMatHSV(imageMat, ScalarColor.YELLOW_HSV_LL, ScalarColor.YELLOW_HSV_HL);
+
         HighGui.imshow("original", imageMat);
     }
 

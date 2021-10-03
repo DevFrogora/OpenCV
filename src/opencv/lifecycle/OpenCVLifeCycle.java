@@ -41,7 +41,7 @@ public class OpenCVLifeCycle {
 
         Imgproc.rectangle(imageMat, //Matrix obj of the image
                 rect,
-                ScalarColor.RED, //Scalar object for color
+                ScalarColor.RED_BGR, //Scalar object for color
                 5 //Thickness of the line
         );
 
@@ -49,7 +49,7 @@ public class OpenCVLifeCycle {
                 imageMat, //Matrix obj of the image
                 new Point(60, 60), //Center of the circle
                 40, //Radius
-                ScalarColor.BLUE, //Scalar object for color
+                ScalarColor.BLUE_BGR, //Scalar object for color
                 5 //Thickness of the circle
         );
     }
