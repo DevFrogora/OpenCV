@@ -5,6 +5,8 @@
  */
 package opencv;
 
+import gui.MainFrame;
+import gui.ReadImageFrame;
 import java.util.ArrayList;
 import opencv.color.ScalarColor;
 import opencv.detector.ColorDetector;
@@ -31,8 +33,33 @@ public class OpenCV {
      */
     public static void main(String[] args) {
 
-        ExampleToSelectColor exampleToSelectColor = new ExampleToSelectColor();
-        exampleToSelectColor.runner();
+//        ExampleToSelectColor exampleToSelectColor = new ExampleToSelectColor();
+//        exampleToSelectColor.runner();
+        launchMainFrame();
+    }
+
+    static void launchMainFrame() {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainFrame().setVisible(true);
+            }
+        });
     }
 
 }

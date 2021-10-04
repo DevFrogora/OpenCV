@@ -26,14 +26,9 @@ public class ExampleToSelectColor extends OpenCVLifeCycle {
     @Override
     public void run() {
 
-//        RedColorSelectOnImg redColorSelectOnImg = new RedColorSelectOnImg();
-//        redColorSelectOnImg.runner();
+        RedColorSelectOnImg redColorSelectOnImg = new RedColorSelectOnImg();
+        redColorSelectOnImg.runner();
         
-//        BlueColorSelectOnImg blueColorSelectOnImg = new BlueColorSelectOnImg();
-//        blueColorSelectOnImg.runner();
-
-        YellowColorSelectOnImg yellowColorSelectOnImg = new YellowColorSelectOnImg();
-        yellowColorSelectOnImg.runner();
 
     }
 
