@@ -64,7 +64,8 @@ public class OpenCVLifeCycle {
             run();
         } finally {
             Imgcodecs.imwrite(destImgPath, imageMat);
-            HighGui.waitKey();
+            // you can add highgui wait key here
+
         }
 
     }

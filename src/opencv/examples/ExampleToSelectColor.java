@@ -7,9 +7,15 @@ package opencv.examples;
 
 import opencv.color.ScalarColor;
 import opencv.detector.ColorDetector;
+import opencv.examples.colorselectonimg.BlueColorSelectOnImg;
+import opencv.examples.colorselectonimg.RedColorSelectOnImg;
+import opencv.examples.colorselectonimg.YellowColorSelectOnImg;
 import opencv.lifecycle.OpenCVLifeCycle;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
 import org.opencv.highgui.HighGui;
+import org.opencv.imgproc.Imgproc;
 
 /**
  *
@@ -19,12 +25,16 @@ public class ExampleToSelectColor extends OpenCVLifeCycle {
 
     @Override
     public void run() {
-        setRandomShape();
-//        imageMat = ColorDetector.selectColorInMatHSV(imageMat,ScalarColor.BLUE_HSV_LL ,ScalarColor.BLUE_HSV_HL);
-//        imageMat = ColorDetector.selectColorInMatHSV(imageMat,ScalarColor.RED_HSV_LL ,ScalarColor.RED_HSV_HL);
-        imageMat = ColorDetector.selectColorInMatHSV(imageMat, ScalarColor.YELLOW_HSV_LL, ScalarColor.YELLOW_HSV_HL);
 
-        HighGui.imshow("original", imageMat);
+//        RedColorSelectOnImg redColorSelectOnImg = new RedColorSelectOnImg();
+//        redColorSelectOnImg.runner();
+        
+//        BlueColorSelectOnImg blueColorSelectOnImg = new BlueColorSelectOnImg();
+//        blueColorSelectOnImg.runner();
+
+        YellowColorSelectOnImg yellowColorSelectOnImg = new YellowColorSelectOnImg();
+        yellowColorSelectOnImg.runner();
+
     }
 
 }

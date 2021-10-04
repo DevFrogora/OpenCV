@@ -26,18 +26,20 @@ public class ColorDetector {
 
     public static Mat selectColorInMatHSV(Mat srcMat, Scalar lowBound, Scalar upperBound) {
 
-        Imgproc.cvtColor(srcMat, srcMat, Imgproc.COLOR_BGR2HSV);
-        Core.inRange(srcMat, lowBound, upperBound, srcMat);
+//        Imgproc.cvtColor(srcMat, srcMat, Imgproc.COLOR_BGR2HSV);
+        Mat dstMat = new Mat();
+        Core.inRange(srcMat, lowBound, upperBound, dstMat);
 
-        return srcMat;
+        return dstMat;
 
     }
 
     public static Mat selectColorInMat(Mat srcMat, Scalar scalarColor) {
+        Mat dstMat = new Mat();
 
-        Core.inRange(srcMat, scalarColor, scalarColor, srcMat);
+        Core.inRange(srcMat, scalarColor, scalarColor, dstMat);
 
-        return srcMat;
+        return dstMat;
 
     }
 
