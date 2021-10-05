@@ -14,10 +14,15 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import opencv.color.ScalarColor;
 import opencv.detector.ColorDetector;
 import opencv.draw.Shape;
+import opencv.examples.colorselectonimg.MultiColorSelectOnImg;
+import opencv.text.WriterOnMat;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 
@@ -102,50 +107,19 @@ public class ReadImageFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        drawRedCircleOnImg();
+        drawSunFlower();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    void drawRedCircleOnImg() {
-        ColorDetector colorDetector = new ColorDetector();
-        Mat originalImage = Imgcodecs.imread("E:\\image\\tele.jpg", Imgcodecs.IMREAD_COLOR);
-        Shape shape = new Shape();
-        Mat redImage = originalImage.clone();
-//        redImage = shape.drawElipseOnMat(redImage);
-        redImage = colorDetector.redOnMat(redImage);
-
-        Mat greenImage = originalImage.clone();
-        greenImage = colorDetector.greenOnMat(greenImage);
-
-        Mat blueImage = originalImage.clone();
-        blueImage = colorDetector.blueOnMat(blueImage);
-
-        Mat yellowImage = originalImage.clone();
-        yellowImage = colorDetector.yellowOnMat(yellowImage);
-
-        Mat blackImage = originalImage.clone();
-        blackImage = colorDetector.blackOnMat(blackImage);
-
-        Mat mask = new Mat();
-        Core.bitwise_or(redImage, greenImage, mask);
-
-//        Core.bitwise_or(mask, blueImage, mask);
-//        Core.bitwise_or(mask, yellowImage, mask);
-//        Core.bitwise_or(mask, blackImage, mask);
-
-        System.out.println("Black Image : " + blackImage.channels());
-        System.out.println("Yellow Image : " + yellowImage.channels());
-
-        HighGui.imshow("original", originalImage);
-        HighGui.imshow("mask", greenImage);
-        HighGui.waitKey(1);
-
+    void drawSunFlower() {
+        Mat mask = new MultiColorSelectOnImg().sunflower();
         try {
-            BufferedImage bufferedImage = ConvertUtils.matToBufferedImage(yellowImage);
+            BufferedImage bufferedImage = ConvertUtils.matToBufferedImage(mask);
             jLabel1.setIcon(new ImageIcon(bufferedImage));
 
         } catch (IOException ex) {
             Logger.getLogger(ReadImageFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        HighGui.waitKey(1);
         jPanel1.repaint();
         repaint();
         pack();

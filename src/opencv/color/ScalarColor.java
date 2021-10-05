@@ -13,6 +13,7 @@ import org.opencv.core.Scalar;
  */
 public class ScalarColor {
     //https://stackoverflow.com/questions/36817133/identifying-the-range-of-a-color-in-hsv-using-opencv/51686953
+//    https://stackoverflow.com/questions/9179189/detect-yellow-color-in-opencv/19488733
 
 //    color_dict_HSV = {'black': [[180, 255, 30], [0, 0, 0]],
 //              'white': [[180, 18, 255], [0, 0, 231]],
@@ -36,13 +37,13 @@ public class ScalarColor {
     public static Scalar RED2_HSV_LL = new Scalar(0, 50, 70, 0);
     public static Scalar RED2_HSV_HL = new Scalar(9, 255, 255, 0);
 
-    public static Scalar YELLOW_HSV_LL = new Scalar(25, 50, 70, 0);
-    public static Scalar YELLOW_HSV_HL = new Scalar(35, 255, 255, 0);
+    public static Scalar YELLOW_HSV_LL = new Scalar(20,100,100,0); // correction -- its only yellow , NOT yellow+ green .
+    public static Scalar YELLOW_HSV_HL = new Scalar(27, 255, 255, 0);
 
     public static Scalar BLACK_HSV_LL = new Scalar(0, 0, 0, 0);
     public static Scalar BLACK_HSV_HL = new Scalar(180, 255, 30, 0);
 
-    public static Scalar GREEN_HSV_LL = new Scalar(36, 50, 70, 0);
+    public static Scalar GREEN_HSV_LL = new Scalar(36, 0, 0, 0);
     public static Scalar GREEN_HSV_HL = new Scalar(89, 255, 255, 0);
 
 }

@@ -84,7 +84,7 @@ public class ColorDetector {
         Mat mask = imageMat.clone();
         Core.bitwise_or(greenMat, greenMat, mask);
         Mat dst = new Mat();
-        Core.copyTo(imageMat, dst, mask);
+        Core.copyTo(imageMat, dst, greenMat);
 
         return dst;
     }
