@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.MaskFormatter;
 import opencv.color.ScalarColor;
 import opencv.detector.ColorDetector;
 import opencv.draw.Shape;
@@ -107,11 +108,11 @@ public class ReadImageFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        drawSunFlower();
+        setJpanelWithMat(new MultiColorSelectOnImg().sunflower());
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    void drawSunFlower() {
-        Mat mask = new MultiColorSelectOnImg().sunflower();
+    void setJpanelWithMat(Mat mask) {
+       
         try {
             BufferedImage bufferedImage = ConvertUtils.matToBufferedImage(mask);
             jLabel1.setIcon(new ImageIcon(bufferedImage));
