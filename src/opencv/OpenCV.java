@@ -9,7 +9,7 @@ import gui.MainFrame;
 import gui.ReadImageFrame;
 import java.util.ArrayList;
 import opencv.color.ScalarColor;
-import opencv.detector.ColorDetector;
+import opencv.detector.GetColorBinary;
 import opencv.examples.ExampleToSelectColor;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;

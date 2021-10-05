@@ -6,7 +6,7 @@
 package opencv.examples;
 
 import opencv.color.ScalarColor;
-import opencv.detector.ColorDetector;
+import opencv.detector.GetColorBinary;
 import opencv.examples.colorselectonimg.BlueColorSelectOnImg;
 import opencv.examples.colorselectonimg.RedColorSelectOnImg;
 import opencv.examples.colorselectonimg.YellowColorSelectOnImg;

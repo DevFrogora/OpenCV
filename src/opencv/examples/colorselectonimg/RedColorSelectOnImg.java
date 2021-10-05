@@ -6,7 +6,7 @@
 package opencv.examples.colorselectonimg;
 
 import opencv.color.ScalarColor;
-import opencv.detector.ColorDetector;
+import opencv.detector.GetColorBinary;
 import opencv.lifecycle.OpenCVLifeCycle;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -26,8 +26,8 @@ public class RedColorSelectOnImg extends OpenCVLifeCycle {
         Mat OriginalImage = imageMat.clone();
         
         Imgproc.cvtColor(OriginalImage, OriginalImage, Imgproc.COLOR_BGR2HSV);
-        Mat red = ColorDetector.selectColorInMatHSV(OriginalImage, ScalarColor.RED1_HSV_LL, ScalarColor.RED1_HSV_HL);
-        Mat red1 = ColorDetector.selectColorInMatHSV(OriginalImage, ScalarColor.RED2_HSV_LL, ScalarColor.RED2_HSV_HL);
+        Mat red = GetColorBinary.selectColorInMatHSV(OriginalImage, ScalarColor.RED1_HSV_LL, ScalarColor.RED1_HSV_HL);
+        Mat red1 = GetColorBinary.selectColorInMatHSV(OriginalImage, ScalarColor.RED2_HSV_LL, ScalarColor.RED2_HSV_HL);
 
 
         Mat mask = imageMat.clone();
