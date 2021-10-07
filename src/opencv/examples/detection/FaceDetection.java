@@ -6,6 +6,7 @@
 package opencv.examples.detection;
 
 import opencv.lifecycle.OpenCVLifeCycle;
+import opencv.load.LoadFaceDetection;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
@@ -35,8 +36,9 @@ public class FaceDetection extends OpenCVLifeCycle {
         HighGui.imshow("original", originalSrc);
         
         // Instantiating the CascadeClassifier
-        String xmlFile = "C:\\opencv\\build\\etc\\lbpcascades\\lbpcascade_frontalface.xml";
-        CascadeClassifier classifier = new CascadeClassifier(xmlFile);
+//        String xmlFile = "C:\\opencv\\build\\etc\\lbpcascades\\lbpcascade_frontalface.xml";
+
+        CascadeClassifier classifier = LoadFaceDetection.getA().haarFrontFaceTree_Classifier;
 
         // Detecting the face in the snap
         MatOfRect faceDetections = new MatOfRect();
@@ -55,7 +57,10 @@ public class FaceDetection extends OpenCVLifeCycle {
                     3 // RGB colour
             );
         }
+        
+        System.out.println("LBP Cascade hits ");
         resize(src,src,new Size(1080,700));//resize image
+        
         HighGui.imshow("detected", src);
         HighGui.waitKey(1);
     }

@@ -14,6 +14,7 @@ import org.opencv.core.Rect;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
 
 /**
  *
@@ -79,5 +80,8 @@ public class OpenCVLifeCycle {
         super.finalize(); //To change body of generated methods, choose Tools | Templates.
 
     }
+    
 
+
+   
 }

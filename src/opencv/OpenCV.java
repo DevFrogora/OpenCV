@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import opencv.color.ScalarColor;
 import opencv.detector.GetColorBinary;
 import opencv.examples.ExampleToSelectColor;
+import opencv.lifecycle.OpenCVLifeCycle;
+import opencv.load.LoadFaceDetection;
+import opencv.load.Loader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -35,7 +38,10 @@ public class OpenCV {
 
 //        ExampleToSelectColor exampleToSelectColor = new ExampleToSelectColor();
 //        exampleToSelectColor.runner();
+
         launchMainFrame();
+        Loader.load();
+
     }
 
     static void launchMainFrame() {
