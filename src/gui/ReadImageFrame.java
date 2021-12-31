@@ -8,9 +8,19 @@ package gui;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import static java.lang.System.in;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,6 +35,7 @@ import opencv.examples.detection.FaceDetection;
 import opencv.text.WriterOnMat;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.highgui.HighGui;
@@ -59,6 +70,7 @@ public class ReadImageFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +112,13 @@ public class ReadImageFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("matTohex");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +128,8 @@ public class ReadImageFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -125,7 +145,9 @@ public class ReadImageFrame extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton4)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -152,6 +174,103 @@ public class ReadImageFrame extends javax.swing.JFrame {
         FaceDetection faceDetection = new FaceDetection();
         faceDetection.runner();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Imgcodecs imageCodecs = new Imgcodecs();
+
+        //Reading the Image from the file  
+        String path = "E:\\image\\test.bmp";
+        Mat matrix = imageCodecs.imread(path);
+        File file = new File(path);
+        MatOfByte matOfByte = new MatOfByte();
+        Imgcodecs.imencode(".bmp", matrix, matOfByte);
+        StringBuilder builder = new StringBuilder();
+        try {
+            FileInputStream fin = new FileInputStream(file);
+            byte[] buffer = new byte[1024];
+            int bytesRead = 0;
+            while ((bytesRead = fin.read(buffer)) > -1) {
+                for (int i = 0; i < bytesRead; i++) {
+                    builder.append(String.format("%02x", buffer[i] & 0xFF)).append(i != bytesRead - 1 ? " " : "");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        System.out.println(builder.toString());
+        int addNewLine =0;
+        for (int i = 0; i < builder.length(); i++) {
+            addNewLine++;
+            if(addNewLine ==24){
+                System.out.println("");
+                addNewLine =0;
+            }
+            System.out.print(builder.charAt(i));
+
+        }
+        //            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+//
+//            byte[] byteArray = matOfByte.toArray();
+//            ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
+//
+//            char[] buffer = new char[4096];
+//            StringBuilder builder = new StringBuilder();
+//            int numChars;
+//
+//            while ((numChars = bufferedReader.read(buffer)) >= 0) {
+//                builder.append(buffer, 0, numChars);
+//            }
+//
+//            byte[] bytes = builder.toString()
+//                    .getBytes(StandardCharsets.UTF_8);
+//
+//            StringBuffer result = new StringBuffer();
+//            int insertNewLine = 0;
+//            for (byte b : bytes) {
+//                insertNewLine++;
+//                result.append(String.format("%02X", b));
+//                if(insertNewLine == 8){
+//                result.append("\n"); // delimiter
+//                insertNewLine =0;
+//                }
+//                
+//                result.append(" "); // delimiter
+//            }
+//            for (int i = 0; i < result.length(); i++) {
+//                System.out.print(result.charAt(i));
+//                
+//            }
+////            System.out.println(result.toString());
+//            try {
+//                ImageIcon bitmap = new ImageIcon(ImageIO.read(bais));
+//                jLabel1.setIcon(bitmap);
+//                for (byte c : byteArray) {
+////                    System.out.println(Integer.toHexString(c));s
+//                }
+////                System.out.println("imageIcon" + bitmap);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+        String file2 = "E:\\image\\1.bmp";
+        imageCodecs.imwrite(file2, matrix);
+        jPanel1.repaint();
+        repaint();
+        pack();
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+    public ImageIcon createImage() {
+        //ccurve.png
+        byte[] b = {-119, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82,
+            0, 0, 0, 15, 0, 0, 0, 15, 8, 6, 0, 0, 0, 59, -42, -107,
+            74, 0, 0, 0, 64, 73, 68, 65, 84, 120, -38, 99, 96, -64, 14, -2,
+            99, -63, 68, 1, 100, -59, -1, -79, -120, 17, -44, -8, 31, -121, 28, 81,
+            26, -1, -29, 113, 13, 78, -51, 100, -125, -1, -108, 24, 64, 86, -24, -30,
+            11, 101, -6, -37, 76, -106, -97, 25, 104, 17, 96, -76, 77, 97, 20, -89,
+            109, -110, 114, 21, 0, -82, -127, 56, -56, 56, 76, -17, -42, 0, 0, 0,
+            0, 73, 69, 78, 68, -82, 66, 96, -126};
+        return new ImageIcon(b);
+    }
 
     void setJpanelWithMat(Mat mask) {
 
@@ -208,6 +327,7 @@ public class ReadImageFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

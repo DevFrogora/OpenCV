@@ -4,14 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/load/LoadFaceDetection.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/load/Loader.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/OpenCV.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/examples/detection/FaceDetection.java</file>
+            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/color/ScalarColor.java</file>
             <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/gui/ReadImageFrame.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/blur/BlurMat.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/examples/ExampleToBlurImg.java</file>
+            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/lifecycle/OpenCVLifeCycle.java</file>
             <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/gui/MainFrame.java</file>
-            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/opencv/template/TemplateMatching.java</file>
+            <file>file:/E:/project%20work/java/project%20source%20code/new/devportfolio_maven/OpenCV/src/decompile/MatToHex.java</file>
         </group>
     </open-files>
 </project-private>
